@@ -1,0 +1,30 @@
+{% extends 'mainsite/base.html' %}
+{% load static %}
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+    <div class="jumbotron p-4">
+        <div class="container">
+            <img src="{% static "images/cat.png" %}" alt="Picture of cat 1">
+            <h1 class="jumbotron-heading">The Students and their cats are:</h1>
+            <div>
+                {% for student in thiscontext.students %}
+                    <ul>
+                        <li>{{ student.firstname }} {{ student.surname }} has <strong>{{ student.number_of_cats }}</strong> cats</li>
+                        {% for cat in student.cats.all %}
+                        <ul>
+                            <li>{{ cat.cat_name }}</li>
+                        </ul>
+                            {% endfor %}
+                    </ul>
+                {% endfor %}
+                <a href="{% url "mainsite:about" %}">About Pets of Students</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+{#    <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"/>#}
+{% endblock %}

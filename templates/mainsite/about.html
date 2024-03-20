@@ -1,0 +1,25 @@
+{% extends 'mainsite/base.html' %}
+{% load static %}
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+    <div class="jumbotron p-4">
+        <div class="container">
+            <img src="{% static "images/cats_with_fire.jpg" %}" alt="">
+            <h1 class="jumbotron-heading">All the cats are:</h1>
+            <div>
+                {% for cat in cats %}
+                    <ul>
+                        <li>{{ cat.cat_name }}</li>
+                    </ul>
+                {% endfor %}
+                Click to go back to <a href="{% url "mainsite:index" %}">Home</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    {#    <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"/>#}
+{% endblock %}
