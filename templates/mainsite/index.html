@@ -12,7 +12,11 @@
             <div>
                 {% for student in thiscontext.students %}
                     <ul>
+                        {% if student.number_of_cats == 1 %}
+                        <li>{{ student.firstname }} {{ student.surname }} has <strong>{{ student.number_of_cats }}</strong> cat</li>
+                        {% else %}
                         <li>{{ student.firstname }} {{ student.surname }} has <strong>{{ student.number_of_cats }}</strong> cats</li>
+                        {% endif %}
                         {% for cat in student.cats.all %}
                         <ul>
                             <li>{{ cat.cat_name }}</li>
